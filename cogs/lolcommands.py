@@ -8,6 +8,10 @@ class summoner_info(commands.Cog):
     def __init__(self, client):
         self.client = client
 
+    @commands.commnand()
+    async def clear(ctx, ammound=5):
+        await ctx.channel.purge(limit=ammount + 1)
+
     @commands.command()
     async def register(self, ctx, *, arg):
 
