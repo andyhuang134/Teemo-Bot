@@ -11,6 +11,8 @@ champion_id = []
 available_chests = []
 
 
+
+
 def register_summoner(summonerName):
     global current_summoner
     try:
