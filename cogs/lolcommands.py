@@ -28,7 +28,7 @@ class summoner_info(commands.Cog):
     async def chest(self, ctx, *, arg):
         if arg in summoner_names:
             hextech_chest(arg)
-            await ctx.send(available_chests)
+            await ctx.send(f'{summoner_names(arg)} {available_chests}')
             available_chests.clear()
         else:
             await ctx.send('The summoner is not registered')
