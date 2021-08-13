@@ -9,7 +9,7 @@ class summoner_info(commands.Cog):
         self.client = client
 
     @commands.command()
-    async def clear(ctx, ammound=5):
+    async def clear(ctx, ammount=5):
         await ctx.channel.purge(limit=ammount + 1)
 
     @commands.command()
