@@ -47,4 +47,4 @@ for filename in os.listdir('./cogs'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
 if __name__ == '__main__':
-    client.run(token)
+    client.run(os.environ['DISCORD_TOKEN'])
