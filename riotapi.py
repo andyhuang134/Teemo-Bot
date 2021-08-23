@@ -10,7 +10,7 @@ visible_stats = []
 champion_id = []
 available_chests = []
 
-
+# Functions
 
 
 def register_summoner(summonerName):
@@ -29,8 +29,9 @@ def register_summoner(summonerName):
             print('Summoner with that ridiculous name not found.')
         else:
             raise
-# prints out summoner stats
 
+
+# prints out summoner stats
 
 def print_stats(summonerName):
     summoner = watcher.summoner.by_name('na1', summonerName)
@@ -75,7 +76,7 @@ def hextech_chest(summonerName):
     summoner = watcher.summoner.by_name('na1', summonerName)
     champion_mastery = watcher.champion_mastery.by_summoner(
         'na1', summoner['id'])
-
+    # gets champion id of champions without a chest
     for i in range(len(champion_mastery)):
         if champion_mastery[i]['chestGranted'] == False:
             champion_id.append(str(champion_mastery[i]['championId']))
@@ -91,10 +92,13 @@ def champions():
     current_champ_list = watcher.data_dragon.champions(champions_version)
     champion_list = current_champ_list['data']
 
+    # gets the correct champions correspoding with the champion id and gets the name of the champion
     for i in champion_list:
-        for j in range(len(champion_id)):
-            if champion_list[i]['key'] == champion_id[j]:
-                available_chests.append(champion_list[i]['name'])
-            else:
-                continue
-    print(available_chests)
+        if champion_list[i]['key'] in champion_id:
+            available_chests.append(champion_list[i]['name'])
+        elif champion_list[i]['key'] not in champion_id:
+            continue
+
+    # print(available_chests)
+    # print(champion_id)
+    # print(len(available_chests))
