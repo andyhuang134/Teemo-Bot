@@ -11,12 +11,12 @@ class summoner_info(commands.Cog):
 
     @commands.command()
     # adds summoner to the bot data
-    async def register(self, ctx, *, arg):
-        if arg not in summoner_names:
+    async def register(self, ctx, *, summoner):
+        if summoner not in summoner_names:
 
             file = discord.File('pics/thumbs_up.png', filename='image.png')
 
-            register_summoner(arg)
+            register_summoner(summoner)
 
             embed = discord.Embed(
                 colour=discord.Color.blue()
@@ -34,15 +34,15 @@ class summoner_info(commands.Cog):
 
             await ctx.send(file=file, embed=embed)
         else:
-            await ctx.send(f'{arg} is aleady registered')
+            await ctx.send(f'{summoner} is aleady registered')
 
     @commands.command()
     # shows stats of the summoner
-    async def stats(self, ctx, *, arg):
-        if arg in summoner_names:
+    async def stats(self, ctx, *, summoner):
+        if summoner in summoner_names:
 
             file = discord.File('pics/ranked_stats.gif', filename='image.gif')
-            print_stats(arg)
+            print_stats(summoner)
 
             embed = discord.Embed(
                 colour=discord.Color.blue()
@@ -62,9 +62,9 @@ class summoner_info(commands.Cog):
 
     @commands.command()
     # shows available chests
-    async def chest(self, ctx, *, arg):
-        if arg in summoner_names:
-            hextech_chest(arg)
+    async def chest(self, ctx, *, summoner):
+        if summoner in summoner_names:
+            hextech_chest(summoner)
             await ctx.author.send(', '.join(available_chests))
 
             # for teminal
